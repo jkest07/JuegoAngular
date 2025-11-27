@@ -1,0 +1,42 @@
+<div class="game-container">
+
+  <!-- SCORE + RESET -->
+  <div class="topbar">
+    <h2>Memory Tech Game</h2>
+    <p class="score">Score: {{ score }}</p>
+    <button class="reset-btn" (click)="reset()">Reset Game</button>
+  </div>
+
+  <!-- GAME GRID -->
+  <div class="grid">
+    <div
+      class="card"
+      *ngFor="let card of cards"
+      [class.revealed]="card.revealed || card.matched"
+      (click)="selectCard(card)"
+    >
+      <div class="inner">
+        <!-- FRONT (Question mark) -->
+        <div class="front">?</div>
+
+        <!-- BACK (Emoji) -->
+        <div class="back">{{ card.emoji }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUESTION MODAL -->
+  <div class="modal" *ngIf="currentQuestion">
+    <div class="modal-content">
+      <h2>Question</h2>
+      <p class="question-text">{{ currentQuestion.text }}</p>
+
+      <div class="options">
+        <button *ngFor="let opt of currentQuestion.options"
+                (click)="answer(opt.charAt(0))">
+          {{ opt }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

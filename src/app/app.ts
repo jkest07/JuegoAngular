@@ -1,13 +1,11 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { JuegoComponent } from './juego/juego';
+import { Component } from '@angular/core';
+import { JuegoComponent } from './juego/juego.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, JuegoComponent],
+  standalone: true,
+  imports: [JuegoComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('JuegoAngular');
-}
+export class AppComponent { }
